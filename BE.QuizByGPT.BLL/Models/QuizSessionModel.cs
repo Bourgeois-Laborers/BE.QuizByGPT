@@ -13,8 +13,10 @@ namespace BE.QuizByGPT.BLL.Models
         public Guid QuizId { get; set; }
         public required QuizModel Quiz { get; set; }
         public List<UserSessionModel>? UserSessions { get; set; }
-        public DateTime? StartDate { get; set; }
-        public QuizSessionStateEnum State { get; set; }
+        public List<UserSessionQuizSessionModel>? UserSessionQuizSession { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public Guid CreatedBy { get; set; }
+        public QuizSessionStatusEnum Status { get; set; }
         public Guid? CurrentQuestionId { get; set; }
         public QuestionModel? CurrentQuestion { get; set; }
     }

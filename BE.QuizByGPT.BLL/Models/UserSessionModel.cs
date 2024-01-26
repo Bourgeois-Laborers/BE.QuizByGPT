@@ -10,8 +10,8 @@ namespace BE.QuizByGPT.BLL.Models
     {
         public Guid Id { get; set; }
         public required string Name { get; set; }
-        public Guid? QuizSessionId { get; set; }
-        public QuizSessionModel? QuizSession { get; set; }
+        public List<QuizSessionModel>? QuizSessions { get; set; }
+        public List<UserSessionQuizSessionModel>? UserSessionQuizSession { get; set; }
         public DateTime LastActivity { get; set; }
     }
 }

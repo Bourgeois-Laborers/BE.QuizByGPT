@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BE.QuizByGPT.BLL.Enums
 {
-    public enum QuizStateEnum
+    public enum QuizSessionStatusEnum
     {
-        Draft = 0,
-        Generating = 1,
-        Ready = 2,
+        Awaiting = 0,
+        InProgress = 1,
+        Finished = 2
     }
 }

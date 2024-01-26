@@ -11,8 +11,9 @@ namespace BE.QuizByGPT.BLL.Models
     {
         public Guid Id { get; set; }
         public required string Topic { get; set; }
-        public DateTime CreationDate { get; set; }
-        public QuizStateEnum State { get; set; }
+        public QuizStatusEnum Status { get; set; }
+        public int QuestionsCount { get; set; }
+        public Guid CreatedBy { get; set; }
         public List<QuestionModel>? Questions { get; set; }
     }
 }

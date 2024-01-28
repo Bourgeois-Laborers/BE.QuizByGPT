@@ -13,7 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(
-        string.Format(builder.Configuration["ConnectionStrings:DefaultConnection"], Environment.GetEnvironmentVariable("DBUser"), Environment.GetEnvironmentVariable("DBPassword"))));
+        string.Format(
+            builder.Configuration["ConnectionStrings:DefaultConnection"], 
+            Environment.GetEnvironmentVariable("DBUrl"), 
+            Environment.GetEnvironmentVariable("DBUser"), 
+            Environment.GetEnvironmentVariable("DBPassword"))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

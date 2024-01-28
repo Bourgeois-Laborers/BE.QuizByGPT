@@ -2,8 +2,9 @@
 using System.Net;
 using System.Text.Json;
 using BE.QuizByGPT.BLL.Models;
+using BE.QuizByGPT.Exceptions;
 
-namespace BE.QuizByGPT
+namespace BE.QuizByGPT.Middlewares
 {
     public class ErrorHandlingMiddleware
     {
@@ -35,6 +36,7 @@ namespace BE.QuizByGPT
             {
                 nameof(BadHttpRequestException) => HttpStatusCode.BadRequest,
                 nameof(KeyNotFoundException) => HttpStatusCode.NotFound,
+                nameof(XHeadersException) => HttpStatusCode.BadRequest,
                 _ => HttpStatusCode.InternalServerError
             };
 

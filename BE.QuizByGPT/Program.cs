@@ -1,9 +1,9 @@
-using BE.QuizByGPT;
 using BE.QuizByGPT.BLL;
 using BE.QuizByGPT.DAL;
 using BE.QuizByGPT.DAL.Interfaces;
 using BE.QuizByGPT.DAL.Repositories;
 using BE.QuizByGPT.Interfaces;
+using BE.QuizByGPT.Middlewares;
 using BE.QuizByGPT.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
+    options.UseSqlServer(
+        string.Format(builder.Configuration["ConnectionStrings:DefaultConnection"], Environment.GetEnvironmentVariable("DBUser"), Environment.GetEnvironmentVariable("DBPassword"))));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -45,7 +46,11 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<HeaderRequestIdMiddleware>();
+
 app.UseMiddleware<ErrorHandlingMiddleware>();
+
+app.UseMiddleware<HeaderValidationMiddleware>();
 
 app.MapControllers();
 

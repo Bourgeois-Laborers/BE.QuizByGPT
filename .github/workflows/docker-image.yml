@@ -15,11 +15,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Set up Docker image tag
+      id: prep
+      run: echo "IMAGE_TAG=be-quizbygpt:$(date +%s)" >> $GITHUB_ENV
+
     - name: Build the Docker image
-      run: docker build . --file BE.QuizByGPT/Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/be-quizbygpt:$(date +%s)
+      run: docker build . --file BE.QuizByGPT/Dockerfile --tag ${{ env.IMAGE_TAG }}
 
     - name: Log in to Docker Registry
       run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{ secrets.DOCKER_REGISTRY }} -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
     - name: Push Image
-      run: docker push ${{ secrets.DOCKER_REGISTRY }}/be-quizbygpt:$(date +%s)
+      run: docker push ${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_TAG }}

@@ -4,6 +4,7 @@ using BE.QuizByGPT.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE.QuizByGPT.DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240130092220_AddedCreateAtInQuestion")]
+    partial class AddedCreateAtInQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasIndex("QuestionModelId");
 
-                    b.ToTable("QuestionAnswer", (string)null);
+                    b.ToTable("QuestionAnswer");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.QuestionModel", b =>
@@ -65,7 +68,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasIndex("QuizModelId");
 
-                    b.ToTable("Question", (string)null);
+                    b.ToTable("Question");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.QuizModel", b =>
@@ -89,7 +92,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Quiz", (string)null);
+                    b.ToTable("Quiz");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.QuizSessionModel", b =>
@@ -119,7 +122,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("QuizSession", (string)null);
+                    b.ToTable("QuizSession");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.UserAnswerModel", b =>
@@ -140,7 +143,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasIndex("UserSessionId");
 
-                    b.ToTable("UserAnswer", (string)null);
+                    b.ToTable("UserAnswer");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.UserSessionModel", b =>
@@ -158,7 +161,7 @@ namespace BE.QuizByGPT.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserSession", (string)null);
+                    b.ToTable("UserSession");
                 });
 
             modelBuilder.Entity("BE.QuizByGPT.BLL.Models.UserSessionQuizSessionModel", b =>

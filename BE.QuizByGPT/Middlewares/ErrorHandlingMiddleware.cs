@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.Exceptions;
+using BE.QuizByGPT.GPT.Exceptions;
 
 namespace BE.QuizByGPT.Middlewares
 {
@@ -37,6 +37,7 @@ namespace BE.QuizByGPT.Middlewares
                 nameof(BadHttpRequestException) => HttpStatusCode.BadRequest,
                 nameof(KeyNotFoundException) => HttpStatusCode.NotFound,
                 nameof(XHeadersException) => HttpStatusCode.BadRequest,
+                nameof(QuizQuestionCountLimitException) => HttpStatusCode.BadRequest,
                 _ => HttpStatusCode.InternalServerError
             };
 

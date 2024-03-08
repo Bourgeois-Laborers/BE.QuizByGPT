@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using BE.QuizByGPT.BLL.Models;
 
 namespace BE.QuizByGPT.DAL.Interfaces

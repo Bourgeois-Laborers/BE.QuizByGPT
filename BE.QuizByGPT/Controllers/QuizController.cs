@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using BE.QuizByGPT.BLL.Enums;
 using BE.QuizByGPT.BLL.Models;
-using BE.QuizByGPT.DAL.Interfaces;
 using BE.QuizByGPT.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE.QuizByGPT.Controllers
@@ -25,6 +22,14 @@ namespace BE.QuizByGPT.Controllers
         public async Task<IActionResult> Get(Guid id)
         {
             var quiz = await _quizService.Get(id);
+
+            return Ok(_mapper.Map<QuizModelGetDto>(quiz));
+        }
+
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetExtended(Guid id)
+        {
+            var quiz = await _quizService.GetExtended(id);
 
             return Ok(_mapper.Map<QuizModelGetDto>(quiz));
         }

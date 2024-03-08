@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using BE.QuizByGPT.BLL.Enums;
 using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.Interfaces;
-using BE.QuizByGPT.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE.QuizByGPT.Controllers

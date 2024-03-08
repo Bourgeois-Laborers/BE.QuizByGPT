@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="OpenAI" Version="1.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BE.QuizByGPT.BLL\BE.QuizByGPT.BLL.csproj" />
+    <ProjectReference Include="..\BE.QuizByGPT.Data\BE.QuizByGPT.DAL.csproj" />
   </ItemGroup>
 
 </Project>

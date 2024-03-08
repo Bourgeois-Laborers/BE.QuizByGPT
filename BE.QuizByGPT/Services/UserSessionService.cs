@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using Azure;
-using BE.QuizByGPT.BLL.Models;
+﻿using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
 using BE.QuizByGPT.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BE.QuizByGPT.Services
 {

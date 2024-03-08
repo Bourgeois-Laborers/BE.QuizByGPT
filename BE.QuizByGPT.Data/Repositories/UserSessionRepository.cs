@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BE.QuizByGPT.BLL.Models;
+﻿using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

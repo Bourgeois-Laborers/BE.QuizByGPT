@@ -6,6 +6,7 @@ public interface IQuizSessionRepository
 {
     Task<QuizSessionModel> CreateAsync(QuizSessionModel userSession);
     Task<QuizSessionModel?> GetAsync(Guid id);
+    Task<QuizSessionModel?> GetExtendedAsync(Guid id);
     Task<QuizSessionModel> UpdateAsync(QuizSessionModel userSession);
     Task DeleteAsync(Guid id);
 }

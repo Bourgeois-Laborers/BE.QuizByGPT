@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Azure.Core;
-using BE.QuizByGPT.BLL.Enums;
+﻿using BE.QuizByGPT.BLL.Enums;
 using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
 using BE.QuizByGPT.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BE.QuizByGPT.Services
 {
@@ -24,6 +21,12 @@ namespace BE.QuizByGPT.Services
         public async Task<QuizSessionModel> Get(Guid id)
         {
             var quiz = await _quizSessionRepository.GetAsync(id);
+            return quiz ?? throw new Exception("QuizSession not found.");
+        }
+
+        public async Task<QuizSessionModel> GetExtended(Guid id)
+        {
+            var quiz = await _quizSessionRepository.GetExtendedAsync(id);
             return quiz ?? throw new Exception("QuizSession not found.");
         }
 
@@ -61,7 +64,7 @@ namespace BE.QuizByGPT.Services
                 throw new Exception("UserSession not found.");
             }
 
-            var quizSession = await _quizSessionRepository.GetAsync(quizSessionId);
+            var quizSession = await _quizSessionRepository.GetExtendedAsync(quizSessionId);
             if (quizSession == null)
             {
                 throw new Exception("QuizSession not found.");
@@ -103,7 +106,7 @@ namespace BE.QuizByGPT.Services
                 throw new Exception("UserSessionId not found.");
             }
 
-            var quizSession = await _quizSessionRepository.GetAsync(quizSessionId);
+            var quizSession = await _quizSessionRepository.GetExtendedAsync(quizSessionId);
             if (quizSession == null)
             {
                 throw new Exception("QuizSessionId not found.");

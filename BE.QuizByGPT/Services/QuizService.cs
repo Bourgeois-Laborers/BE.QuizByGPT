@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using Azure.Core;
-using BE.QuizByGPT.BLL.Enums;
+﻿using BE.QuizByGPT.BLL.Enums;
 using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
-using BE.QuizByGPT.DAL.Repositories;
 using BE.QuizByGPT.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BE.QuizByGPT.Services
 {
@@ -23,6 +19,12 @@ namespace BE.QuizByGPT.Services
         public async Task<QuizModel> Get(Guid id)
         {
             var quiz = await _quizRepository.GetAsync(id);
+            return quiz ?? throw new Exception("Quiz not found.");
+        }
+
+        public async Task<QuizModel> GetExtended(Guid id)
+        {
+            var quiz = await _quizRepository.GetExtendedAsync(id);
             return quiz ?? throw new Exception("Quiz not found.");
         }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using BE.QuizByGPT.BLL.Models;
 
 namespace BE.QuizByGPT.BLL
@@ -16,6 +11,11 @@ namespace BE.QuizByGPT.BLL
             CreateMap<QuizModel, QuizModelGetDto>().ReverseMap();
             CreateMap<QuizModel, QuizModelPostDto>().ReverseMap();
             CreateMap<QuizSessionModel, QuizSessionModelGetDto>().ReverseMap();
+            CreateMap<QuestionModel, QuestionModelGpt>()
+                .ForMember("Question", opt => opt.MapFrom(gpt => gpt.Text))
+                .ReverseMap()
+                .ForMember("Text", opt => opt.MapFrom(gpt => gpt.Question));
+            CreateMap<QuestionAnswerModel, QuestionAnswerModelGpt>().ReverseMap();
         }
     }
 }

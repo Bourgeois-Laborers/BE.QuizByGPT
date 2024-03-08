@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BE.QuizByGPT.BLL.Models;
+﻿using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,9 +23,15 @@ namespace BE.QuizByGPT.DAL.Repositories
         public async Task<QuizSessionModel?> GetAsync(Guid id)
         {
             return await _context.QuizSession
-                .AsNoTracking()
+                .FirstOrDefaultAsync(model => model!.Id == id);
+        }
+
+        public async Task<QuizSessionModel?> GetExtendedAsync(Guid id)
+        {
+            return await _context.QuizSession
                 .Include(model => model.Quiz)
                 .Include(model => model.UserSessionQuizSession)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(model => model!.Id == id);
         }
 

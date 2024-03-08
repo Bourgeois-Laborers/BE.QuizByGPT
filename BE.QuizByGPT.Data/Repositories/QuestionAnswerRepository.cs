@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using BE.QuizByGPT.BLL.Models;
 using BE.QuizByGPT.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;

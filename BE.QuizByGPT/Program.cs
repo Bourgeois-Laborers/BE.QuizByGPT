@@ -2,6 +2,8 @@ using BE.QuizByGPT.BLL;
 using BE.QuizByGPT.DAL;
 using BE.QuizByGPT.DAL.Interfaces;
 using BE.QuizByGPT.DAL.Repositories;
+using BE.QuizByGPT.GPT.Interfaces;
+using BE.QuizByGPT.GPT.Services;
 using BE.QuizByGPT.Interfaces;
 using BE.QuizByGPT.Middlewares;
 using BE.QuizByGPT.Services;
@@ -26,6 +28,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(config => config.AddProfile(typeof(AppMapProfile)));
 
+OpenAI_API.APIAuthentication.LoadFromEnv();
+
 builder.Services.AddScoped<IUserSessionRepository, UserSessionRepository>();
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<IQuestionAnswerRepository, QuestionAnswerRepository>();
@@ -36,6 +40,8 @@ builder.Services.AddScoped<IUserAnswerRepository, UserAnswerRepository>();
 builder.Services.AddScoped<IUserSessionService, UserSessionService>();
 builder.Services.AddScoped<IQuizService, QuizService>();
 builder.Services.AddScoped<IQuizSessionService, QuizSessionService>();
+
+builder.Services.AddScoped<IGptService, GptService>();
 
 var app = builder.Build();
 

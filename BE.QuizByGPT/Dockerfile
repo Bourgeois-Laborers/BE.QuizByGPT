@@ -12,6 +12,7 @@ WORKDIR /src
 COPY ["BE.QuizByGPT/BE.QuizByGPT.csproj", "BE.QuizByGPT/"]
 COPY ["BE.QuizByGPT.Data/BE.QuizByGPT.DAL.csproj", "BE.QuizByGPT.Data/"]
 COPY ["BE.QuizByGPT.BLL/BE.QuizByGPT.BLL.csproj", "BE.QuizByGPT.BLL/"]
+COPY ["BE.QuizByGPT.GPT/BE.QuizByGPT.GPT.csproj", "BE.QuizByGPT.GPT/"]
 RUN dotnet restore "./BE.QuizByGPT/./BE.QuizByGPT.csproj"
 COPY . .
 WORKDIR "/src/BE.QuizByGPT"
